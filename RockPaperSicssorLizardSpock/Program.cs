@@ -2,11 +2,11 @@
 
 namespace RockPaperSicssorLizardSpock
 {
-    class Game
+    class Program
     {
         static void Main(string[] args)
         {
-           
+          
         }
     }
 }
