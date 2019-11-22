@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RockPaperSicssorLizardSpock
 {
-    class  Player
+    abstract class Players
     {
         //member variables
         public List<string> choices = new List<string>() { "rock", "paper", "sicssor", "lizard", "spock" };
@@ -13,13 +13,13 @@ namespace RockPaperSicssorLizardSpock
         public string gesture;
 
         //constructor
-        public Player()
+        public Players()
         {
             
         }
 
         //member methods
-        public abstract void PickGesture();
+        public abstract string PickGesture();
 
         public abstract void PickName();
         

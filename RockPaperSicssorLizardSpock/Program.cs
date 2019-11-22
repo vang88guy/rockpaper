@@ -6,7 +6,9 @@ namespace RockPaperSicssorLizardSpock
     {
         static void Main(string[] args)
         {
-          
+            Game testGame = new Game();
+            testGame.RunGame();
+            
         }
     }
 }
