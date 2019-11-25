@@ -11,6 +11,8 @@ namespace RockPaperSicssorLizardSpock
         
         Players playerOne; 
         Players playerTwo;
+        int scoreOne;
+        int scoreTwo;
 
         
 
@@ -25,6 +27,8 @@ namespace RockPaperSicssorLizardSpock
         public void Menu()
         {
             Console.WriteLine("Welcome to Rock, Paper, Sicssor, Lizrad, Spock");
+            Console.WriteLine();
+            Console.WriteLine("It will be best 2 out of 3");
             Console.WriteLine();
             Console.WriteLine("Rules of this game \n Rock crushes Scissors \n Scissors cuts Paper \n Paper covers Rock \n Rock crushes Lizard \n Lizard poisons Spock \n Spock smashes Scissors \n Scissors decapitates Lizard \n Lizard eats Paper \n Paper disproves Spock \n Spock vaporizes Rock");
             Console.WriteLine(); 
@@ -56,56 +60,97 @@ namespace RockPaperSicssorLizardSpock
         {
             string playeroneGesture = playerOne.PickGesture();
             string playertwoGesture = playerTwo.PickGesture();
-            //OneGesture = playerOne.PickGesture();
-            //TwoGesture = playerTwo.PickGesture();
+            
 
             if (playeroneGesture == playertwoGesture)
             {
                 Console.WriteLine("Tie no one gets a score.");
             }
-            else if (playeroneGesture == "rock" && playertwoGesture == "lizrad" || playertwoGesture == "scissors")
+            else if (playeroneGesture == "rock")
             {
-                Console.WriteLine("Player One wins");
-                playerOne.PlayerScore();
+                if(playertwoGesture == "lizard" || playertwoGesture == "scissors")
+                {
+                    Console.WriteLine("Player One scores");
+                    scoreOne += playerOne.PlayerScore();
+                }
+                else if(playertwoGesture == "spock" || playertwoGesture == "paper")
+                {
+                    Console.WriteLine("Player Two scores");
+                    scoreTwo += playerTwo.PlayerScore();
+                }
             }
 
-            else if (playeroneGesture == "rock" && playertwoGesture == "spock" || playertwoGesture == "paper")
+           
+            else if (playeroneGesture == "scissors")
             {
-                Console.WriteLine("Player Two Wins");
-                playerTwo.PlayerScore();
+                if (playertwoGesture == "paper" || playertwoGesture == "lizard")
+                {
+                    Console.WriteLine("Player One scores");
+                    scoreOne += playerOne.PlayerScore();
+                }
+                else if(playertwoGesture == "spock" || playertwoGesture == "rock")
+                {
+                    Console.WriteLine("Player Two scores");
+                    scoreTwo += playerTwo.PlayerScore();
+                }
             }
-            else if (playeroneGesture == "scissors" && playertwoGesture == "paper" || playertwoGesture == "lizard")
+           
+            else if (playeroneGesture == "lizard")
             {
-                Console.WriteLine("Player One Wins");
-                playerOne.PlayerScore();
+                if (playertwoGesture == "paper" || playertwoGesture == "spock")
+                {
+                    Console.WriteLine("Player One scores");
+                    scoreOne += playerOne.PlayerScore();
+                }
+                else if ( playertwoGesture == "rock" || playertwoGesture == "scissors")
+                {
+                    Console.WriteLine("Player Two scores");
+                    scoreTwo += playerTwo.PlayerScore();
+                }
             }
-            else if (playeroneGesture == "scissors" && playertwoGesture == "spock")
+           
+            else if (playeroneGesture == "paper")
             {
-                Console.WriteLine("Player Two Wins");
-                playerTwo.PlayerScore();
+                if (playertwoGesture == "spock" || playertwoGesture == "rock")
+                {
+                    Console.WriteLine("Player One scores");
+                    scoreOne += playerOne.PlayerScore();
+                }
+                else if (playertwoGesture == "scissors" || playertwoGesture == "lizard")
+                {
+                    Console.WriteLine("Player Two scores");
+                    scoreTwo += playerTwo.PlayerScore();
+                }
             }
-            else if (playeroneGesture == "lizard" && playertwoGesture == "paper" || playertwoGesture == "spock")
+            
+            else if (playeroneGesture == "spock") 
             {
-                Console.WriteLine("Player One Wins");
-                playerOne.PlayerScore();
+                if (playertwoGesture == "scissors" || playertwoGesture == "rock")
+                {
+                    Console.WriteLine("Player One scores");
+                    scoreOne += playerOne.PlayerScore();
+                }
+                else if (playertwoGesture == "lizard" || playertwoGesture == "paper")
+                {
+                    Console.WriteLine("Player Two scores");
+                    
+                    scoreTwo += playerTwo.PlayerScore();
+                }
             }
+            Console.ReadLine();
 
-            else if (playeroneGesture == "paper" && playertwoGesture == "spock")
+        }
+        public void WhoWins()
+        {
+            if (scoreOne == 2)
             {
-                Console.WriteLine("Player One Wins");
-                playerOne.PlayerScore();
+                Console.WriteLine("Player One Wins!!!");
             }
-            else if (playeroneGesture == "paper" && playertwoGesture == "scissors" || playertwoGesture == "lizard")
+            else if(scoreTwo == 2)
             {
-                Console.WriteLine("Player Two Wins");
-                playerTwo.PlayerScore();
-            }
-            else if () 
-            {
-                
+                Console.WriteLine("Player Two Wins!!!");
             }
         }
-
         public void RunGame()
         {
             Menu();
@@ -113,8 +158,45 @@ namespace RockPaperSicssorLizardSpock
             playerOne.PickName();
             Console.Clear();
             playerTwo.PickName();
+            
             Console.Clear();
-            Rules();
+            while (scoreOne <= 2 && scoreTwo <= 2)
+            {
+                Console.WriteLine("Player One: " + scoreOne);
+                Console.WriteLine("Player Two: " + scoreTwo);
+                Rules();
+                
+               
+            }
+            if (scoreOne == 2)
+            {
+                Console.WriteLine("Player One Wins!!!");
+                Console.ReadLine();
+            }
+            else if (scoreTwo == 2)
+            {
+                Console.WriteLine("Player Two Wins!!!");
+                Console.ReadLine();
+            }
+            Console.WriteLine();
+            
+            Console.WriteLine("Would you like to play again?");
+            string PlayAgain = Console.ReadLine();
+            switch (PlayAgain.ToLower())
+            {
+                case "yes":
+                    {
+                        RunGame();
+                        break;
+                    }
+                case "no":
+                    {
+                        Console.WriteLine("Good bye");
+                        Console.ReadLine();
+                        break;
+                    }
+                
+            }
         }
 
     }

@@ -7,7 +7,7 @@ namespace RockPaperSicssorLizardSpock
     class Human : Players
     {
         //member variables
-        bool input = false;
+        
         //constructor
         public Human()
         {
@@ -22,7 +22,11 @@ namespace RockPaperSicssorLizardSpock
             
             
         }
-        
+        public static bool BetweenRanges(int a, int b, int number)
+        {
+            return (a <= number && number <= b);
+        }
+
         public override string PickGesture()
         {
             
@@ -32,11 +36,25 @@ namespace RockPaperSicssorLizardSpock
             Console.WriteLine();
             Console.WriteLine("Please pick a Gesture!");
             Console.WriteLine();
-            Console.WriteLine(" 1. rock \n 2. choices \n 3. scissors \n 4. lizard \n 5. Spock");
+            Console.WriteLine(" 1. rock \n 2. paper \n 3. scissors \n 4. lizard \n 5. Spock");
             ///choices.ForEach(Console.WriteLine);
             Console.WriteLine();
-            int playerGesture = Convert.ToInt32(Console.ReadLine());
+            var PlayerGest = Console.ReadLine();
+            int playerGesture;
+            
+            
+                while (!int.TryParse(PlayerGest, out playerGesture))
+                {
+
+                    Console.WriteLine("Not a number");
+                    PlayerGest = Console.ReadLine();
+
+                }
+            
             gesture = choices[playerGesture - 1];
+            Console.WriteLine(name + " picks " + gesture);
+            Console.WriteLine();
+            Console.Clear();
             return gesture;
             
         }

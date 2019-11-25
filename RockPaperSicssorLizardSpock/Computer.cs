@@ -33,7 +33,10 @@ namespace RockPaperSicssorLizardSpock
             Console.WriteLine();
 
             gesture = choices[random.Next(choices.Count)];
-            Console.WriteLine(gesture);
+            Console.WriteLine(name + " picks " + gesture);
+            Console.WriteLine();
+            Console.ReadLine();
+            Console.Clear();
             return gesture;
         }
         public override int PlayerScore()
