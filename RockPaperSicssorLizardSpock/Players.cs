@@ -7,7 +7,7 @@ namespace RockPaperSicssorLizardSpock
     abstract class Players
     {
         //member variables
-        public List<string> choices = new List<string>() { "rock", "paper", "sicssor", "lizard", "spock" };
+        public List<string> choices = new List<string>() { "rock", "paper", "sicssors", "lizard", "spock" };
         public int score;
         public string name;
         public string gesture;
@@ -15,13 +15,16 @@ namespace RockPaperSicssorLizardSpock
         //constructor
         public Players()
         {
-            
+           
         }
 
         //member methods
         public abstract string PickGesture();
 
         public abstract void PickName();
-        
+
+        public abstract int PlayerScore();
+       
+
     }
 }

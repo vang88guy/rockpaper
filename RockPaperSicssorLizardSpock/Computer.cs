@@ -14,7 +14,7 @@ namespace RockPaperSicssorLizardSpock
         //constructor
         public Computer()
         {
-                
+            
         }
 
         //member methods
@@ -35,9 +35,12 @@ namespace RockPaperSicssorLizardSpock
             gesture = choices[random.Next(choices.Count)];
             Console.WriteLine(gesture);
             return gesture;
-
         }
-
+        public override int PlayerScore()
+        {
+            score++;
+            return score;
+        }
 
     }
 }

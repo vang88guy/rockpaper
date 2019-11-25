@@ -8,10 +8,12 @@ namespace RockPaperSicssorLizardSpock
     {
         //member variables
         public string NumberOfPlayers;
-
+        
         Players playerOne; 
-        Players playerTwo; 
-       
+        Players playerTwo;
+
+        
+
 
         //constructor
         public Game()
@@ -38,8 +40,8 @@ namespace RockPaperSicssorLizardSpock
       
             if(NumberOfPlayers == "1")
             {
-                playerOne = new Human();
-                playerTwo = new Computer();
+               playerOne = new Human();
+               playerTwo = new Computer();
                 
             }
             else if(NumberOfPlayers == "2")
@@ -50,6 +52,60 @@ namespace RockPaperSicssorLizardSpock
             Console.Clear();
         }
 
+        public void Rules()
+        {
+            string playeroneGesture = playerOne.PickGesture();
+            string playertwoGesture = playerTwo.PickGesture();
+            //OneGesture = playerOne.PickGesture();
+            //TwoGesture = playerTwo.PickGesture();
+
+            if (playeroneGesture == playertwoGesture)
+            {
+                Console.WriteLine("Tie no one gets a score.");
+            }
+            else if (playeroneGesture == "rock" && playertwoGesture == "lizrad" || playertwoGesture == "scissors")
+            {
+                Console.WriteLine("Player One wins");
+                playerOne.PlayerScore();
+            }
+
+            else if (playeroneGesture == "rock" && playertwoGesture == "spock" || playertwoGesture == "paper")
+            {
+                Console.WriteLine("Player Two Wins");
+                playerTwo.PlayerScore();
+            }
+            else if (playeroneGesture == "scissors" && playertwoGesture == "paper" || playertwoGesture == "lizard")
+            {
+                Console.WriteLine("Player One Wins");
+                playerOne.PlayerScore();
+            }
+            else if (playeroneGesture == "scissors" && playertwoGesture == "spock")
+            {
+                Console.WriteLine("Player Two Wins");
+                playerTwo.PlayerScore();
+            }
+            else if (playeroneGesture == "lizard" && playertwoGesture == "paper" || playertwoGesture == "spock")
+            {
+                Console.WriteLine("Player One Wins");
+                playerOne.PlayerScore();
+            }
+
+            else if (playeroneGesture == "paper" && playertwoGesture == "spock")
+            {
+                Console.WriteLine("Player One Wins");
+                playerOne.PlayerScore();
+            }
+            else if (playeroneGesture == "paper" && playertwoGesture == "scissors" || playertwoGesture == "lizard")
+            {
+                Console.WriteLine("Player Two Wins");
+                playerTwo.PlayerScore();
+            }
+            else if () 
+            {
+                
+            }
+        }
+
         public void RunGame()
         {
             Menu();
@@ -58,10 +114,7 @@ namespace RockPaperSicssorLizardSpock
             Console.Clear();
             playerTwo.PickName();
             Console.Clear();
-            playerOne.PickGesture();
-            Console.Clear();
-            playerTwo.PickGesture();
-            Console.Clear();
+            Rules();
         }
 
     }
